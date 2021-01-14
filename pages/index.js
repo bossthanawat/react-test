@@ -1,65 +1,98 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { Button, Grid } from "@material-ui/core";
+import BaseLayout from "../components/layouts/BaseLayout.js.js";
+import { makeStyles } from "@material-ui/core/styles";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import SearchIcon from "@material-ui/icons/Search";
+import SettingsIcon from "@material-ui/icons/Settings";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import withPrivateRoute from "../components/withPrivateRoute";
 
-export default function Home() {
+import { AuthContext } from "../context/AuthProvider";
+import { useContext } from "react";
+
+import Link from "next/link";
+// import Router from "next/router"
+
+const Home = () => {
+  const { user } = useContext(AuthContext);
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <BaseLayout
+      routersBreadcrumbs={[
+        {
+          path: "/",
+          title: "หน้าแรก",
+        }
+      ]}
+    >
+      <Grid container spacing={3} className="content-center content-full">
+        <Grid item xs={6} container alignItems="center" justify="center">
+          <Grid item>
+            <InsertEmoticonIcon style={{ fontSize: "12em" }} />
+            <h1>สวัสดีคุณ {user}</h1>
+            <h2>วันนี้คุณต้องการจะทำอะไร?</h2>
+          </Grid>
+        </Grid>
+        <Grid item xs={6} container alignItems="center">
+          <Menu />
+        </Grid>
+      </Grid>
+    </BaseLayout>
+  );
+};
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+const Menu = () => {
+  const classes = useStyles();
+  return (
+    <>
+      <div className={classes.containerMenu}>
+        <div className={classes.itemContainerMenu}>
+          <Link href="checkRice">
+            <Button
+              style={{ height: "200px" }}
+              startIcon={<SearchIcon style={{ fontSize: "8em" }} />}
+              variant="contained"
+              color="primary"
+              fullWidth={true}
+            >
+              <h1>ตรวจข้าว</h1>
+            </Button>
+          </Link>
         </div>
-      </main>
+        <div>
+          <Button
+            className={classes.itemContainerMenu}
+            style={{ width: "310px", height: "100px" }}
+            startIcon={<AccessTimeIcon style={{ fontSize: "3em" }} />}
+            variant="contained"
+            color="primary"
+            fullWidth={true}
+          >
+            <h1>ประวัติข้าว</h1>
+          </Button>
+          <Button
+            className={classes.itemContainerMenu}
+            style={{ width: "310px", height: "100px" }}
+            startIcon={<SettingsIcon style={{ fontSize: "3em" }} />}
+            variant="contained"
+            color="primary"
+            fullWidth={true}
+          >
+            <h1>ตั้งค่า</h1>
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+};
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
-}
+const useStyles = makeStyles(() => ({
+  root: {},
+  containerMenu: {
+    width: "700px",
+  },
+  itemContainerMenu: {
+    margin: "20px",
+  },
+}));
+
+export default withPrivateRoute(Home);
