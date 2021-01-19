@@ -16,7 +16,7 @@ const Login = () => {
           spacing={3}
           alignItems="center"
           justify="center"
-          className="content-center content-full"
+          className="content-full"
         >
           <Grid item xs={6} container alignItems="center" justify="center">
             <Grid item className={classes.textLogo}>

@@ -68,7 +68,7 @@ export const ProtectRoute = ({ children }) => {
       // client-side-only code
       isAuth = JSON.parse(localStorage.getItem("user")) ? true : false
       if (isAuth) {
-        Router.push("/");
+        // Router.push("/");
       } else {
         Router.push("/login");
       }

@@ -1,4 +1,4 @@
-.content-center-full {
+.content-center {
   display: "flex";
   justify-content: "center";
   align-items: "center";
@@ -7,9 +7,11 @@
 .content-full {
   // appbar 64px
   // content margin: theme.spacing(2) 16px
-  height: calc(100vh - 64px - 16px);
-  height: -moz-calc(100vh - 64px - 16px);
-  height: -webkit-calc(100vh  - 64px - 16px);
-  height: -o-calc(100vh  - 64px - 16px);
-  // border: "3px solid green",
+  position: fixed;
+  height: 100%;
+  // height: calc(100vh - 64px - 16px);
+  // height: -moz-calc(100vh - 64px - 16px);
+  // height: -webkit-calc(100vh  - 64px - 16px);
+  // height: -o-calc(100vh  - 64px - 16px);
+  // border: 3px solid green,
 }

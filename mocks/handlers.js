@@ -1,10 +1,10 @@
 import { rest } from "msw";
-import users from "./data/users"; // contains mock data for users
-import messages from "./data/messages";// contains mock data for messages
+import messages from "./data/messages";
+import rice from "./data/rice";
 
 export const handlers = [
-  rest.get("https://backend.dev/users", (req, res, ctx) => {
-    return res(ctx.json(users));
+  rest.get("/rice/type", (req, res, ctx) => {
+    return res(ctx.json(rice.type));
   }),
 
   rest.get("/users/:id/messages", (req, res, ctx) => {

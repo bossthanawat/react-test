@@ -23,8 +23,8 @@ const Home = () => {
           title: "หน้าแรก",
         }
       ]}
-    >
-      <Grid container spacing={3} className="content-center content-full">
+    > 
+      <Grid container className="content-full">
         <Grid item xs={6} container alignItems="center" justify="center">
           <Grid item>
             <InsertEmoticonIcon style={{ fontSize: "12em" }} />
@@ -58,10 +58,10 @@ const Menu = () => {
             </Button>
           </Link>
         </div>
-        <div>
+        <div style={{ display: "flex"}}>
           <Button
             className={classes.itemContainerMenu}
-            style={{ width: "310px", height: "100px" }}
+            style={{ height: "100px" }}
             startIcon={<AccessTimeIcon style={{ fontSize: "3em" }} />}
             variant="contained"
             color="primary"
@@ -71,7 +71,7 @@ const Menu = () => {
           </Button>
           <Button
             className={classes.itemContainerMenu}
-            style={{ width: "310px", height: "100px" }}
+            style={{  height: "100px" }}
             startIcon={<SettingsIcon style={{ fontSize: "3em" }} />}
             variant="contained"
             color="primary"
@@ -88,7 +88,7 @@ const Menu = () => {
 const useStyles = makeStyles(() => ({
   root: {},
   containerMenu: {
-    width: "700px",
+    width: "600px",
   },
   itemContainerMenu: {
     margin: "20px",

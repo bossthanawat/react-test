@@ -8,6 +8,11 @@ import '../styles/index.scss';
 
 import ContextProvider from "../context/providerComposer"
 import { ProtectRoute } from "../context/AuthProvider"
+
+if (process.env.NODE_ENV === "development") {
+  //npx msw init ./public
+  require("../mocks")
+}
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 

@@ -79,7 +79,7 @@ const LoginForm = () => {
             name="password"
             onChange={updateField}
             error={isFormInvalid.password}
-            helperText={isFormInvalid.username && `**โปรดกรอก "รหัสผ่าน"`}
+            helperText={isFormInvalid.password && `**โปรดกรอก "รหัสผ่าน"`}
           />
         </div>
         <Button
