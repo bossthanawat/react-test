@@ -9,9 +9,9 @@ import '../styles/index.scss';
 import ContextProvider from "../context/providerComposer"
 import { ProtectRoute } from "../context/AuthProvider"
 
+import { makeServer } from "../mocks/mirage"
 if (process.env.NODE_ENV === "development") {
-  //npx msw init ./public
-  require("../mocks")
+  makeServer({ environment: "development" })
 }
 export default function MyApp(props) {
   const { Component, pageProps } = props;
